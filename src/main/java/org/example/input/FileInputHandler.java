@@ -1,4 +1,6 @@
-package org.example;
+package org.example.input;
+
+import org.example.Record;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,13 +22,20 @@ public class FileInputHandler implements InputHandler {
                 String readLine = scanner.next();
                 String[] tokens = readLine.split(",");
 
+                String customerId = tokens[0];
+                String contractId = tokens[1];
+                String geoZone = tokens[2];
+                String teamCode = tokens[3];
+                String projectCode = tokens[4];
+                String buildDuration = tokens[5];
+
                 Record record = new Record.RecordBuilder()
-                        .setCustomerId(tokens[0])
-                        .setContractId(tokens[1])
-                        .setGeoZone(tokens[2])
-                        .setTeamCode(tokens[3])
-                        .setProjectCode(tokens[4])
-                        .setBuildDuration(tokens[5])
+                        .setCustomerId(customerId)
+                        .setContractId(contractId)
+                        .setGeoZone(geoZone)
+                        .setTeamCode(teamCode)
+                        .setProjectCode(projectCode)
+                        .setBuildDuration(buildDuration)
                         .build();
 
                 records.add(record);

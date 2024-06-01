@@ -1,4 +1,6 @@
-package org.example;
+package org.example.input;
+
+import org.example.Record;
 
 import java.util.List;
 

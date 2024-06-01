@@ -1,8 +1,16 @@
 package org.example;
 
+import org.example.input.FileInputHandler;
+import org.example.output.AverageBuildDurationForGeoZoneOutputHandler;
+import org.example.output.UniqueCustomerIdForContractIdOutputHandler;
+import org.example.output.UniqueCustomerIdForGeoZoneOutputHandler;
+import org.example.report.AverageBuildDurationForGeoZoneReportBuilder;
+import org.example.report.UniqueCustomerIdForContractIdReportBuilder;
+import org.example.report.UniqueCustomerIdForGeoZoneReportBuilder;
+
 import java.util.*;
 
-public class Main {
+public class ReportExecutor {
 
     public void execute() {
 
@@ -20,25 +28,25 @@ public class Main {
         new UniqueCustomerIdForContractIdOutputHandler().printReportToOutput(report);
 
         // ****************************************************
-        // The number of unique customerId for each geozone and
-        // The list of unique customerId for each geozone
+        // The number of unique customerId for each geoZone and
+        // The list of unique customerId for each geoZone
         // ****************************************************
 
         // Building the report
-       report =  new UniqueCustomerIdForGeozoneReportBuilder().buildReport(records);
+       report =  new UniqueCustomerIdForGeoZoneReportBuilder().buildReport(records);
 
         // Formatting the report and printing the result
-        new UniqueCustomerIdForGeozoneOutputHandler().printReportToOutput(report);
+        new UniqueCustomerIdForGeoZoneOutputHandler().printReportToOutput(report);
 
         // *******************************************
-        // The average build duration for each geozone
+        // The average build duration for each geoZone
         // *******************************************
 
         // Building the report
-        report = new AverageBuildDurationForGeoaoneReportBuilder().buildReport(records);
+        report = new AverageBuildDurationForGeoZoneReportBuilder().buildReport(records);
 
         // Formatting the report and printing the result
-        new AverageBuildDurationForGeoaoneOutputHandler().printReportToOutput(report);
+        new AverageBuildDurationForGeoZoneOutputHandler().printReportToOutput(report);
 
     }
 

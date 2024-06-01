@@ -1,4 +1,4 @@
-package org.example;
+package org.example.output;
 
 // Marker interface for all output handlers. Each output handler should format and print the report to its specific output
 public interface OutputHandler {

@@ -1,4 +1,6 @@
-package org.example;
+package org.example.report;
+
+import org.example.Record;
 
 import java.util.List;
 
