@@ -1,0 +1,44 @@
+package org.example.output;
+
+import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class UniqueCustomerIdForContractIdOutputHandlerTest {
+
+    @Test
+    void printReportToOutput() {
+        Map<String, Set<String>> report = new HashMap<>();
+        Set<String> customerIds1 = new HashSet<>();
+        customerIds1.add("2343225");
+        customerIds1.add("1223456");
+        report.put("2345", customerIds1);
+
+        Set<String> customerIds2 = new HashSet<>();
+        customerIds2.add("3244332");
+        report.put("2346", customerIds2);
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        OutputHandler outputHandler = new UniqueCustomerIdForContractIdOutputHandler();
+        outputHandler.printReportToOutput(report);
+
+        Set<String> expectedOutputLines = new HashSet<>();
+        expectedOutputLines.add("The number of unique customerId for contractId {2345} is 2");
+        expectedOutputLines.add("The number of unique customerId for contractId {2346} is 1");
+
+        String[] outputLines = outputStream.toString().split(System.lineSeparator());
+
+        for (String outputLine : outputLines) {
+            assertTrue(expectedOutputLines.contains(outputLine));
+        }
+    }
+}
